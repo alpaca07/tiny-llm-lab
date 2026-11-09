@@ -2,16 +2,60 @@
 
 이론은 [THEORY.md](THEORY.md). 순서대로 따라 하면 된다.
 
-## 0. 준비
+## 0. 환경 세팅 (Google Colab)
 
-```bash
-cd tiny-llm-lab
-python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-cd 01-char-gpt
+### 0-1. 노트북 만들기 + GPU 켜기
+1. [colab.research.google.com](https://colab.research.google.com) 접속 → **새 노트북**
+2. 상단 메뉴 **런타임 → 런타임 유형 변경 → 하드웨어 가속기: T4 GPU** → 저장
+3. 첫 셀에서 GPU가 잡혔는지 확인 (`!`로 시작하면 셸 명령):
+
+```python
+!nvidia-smi
+import torch
+print(torch.__version__, torch.cuda.is_available())   # True 가 나와야 함
 ```
 
-데이터(tiny shakespeare, 약 1MB)는 첫 실행 때 `data/input.txt`로 자동 다운로드된다.
+`False`면 런타임 유형이 GPU로 안 바뀐 것이다. 2번을 다시 확인.
+
+### 0-2. 레포 가져오기
+레포가 public이라 로그인 없이 clone된다.
+
+```python
+!git clone https://github.com/alpaca07/tiny-llm-lab.git
+%cd tiny-llm-lab/01-char-gpt
+```
+
+- Colab에는 PyTorch, numpy, matplotlib이 **이미 설치**되어 있다. `pip install -r requirements.txt`는 하지 않는다 (torch를 다시 깔아 오래 걸리고 버전이 꼬일 수 있음).
+- 데이터(tiny shakespeare, 약 1MB)는 첫 실행 때 `data/input.txt`로 자동 다운로드된다.
+
+### 0-3. 실행
+
+```python
+!python bigram.py
+!python attention_demo.py
+!python gpt.py --max_iters 3000
+```
+
+- `gpt.py`는 `cuda`가 있으면 자동으로 GPU를 쓴다. 출력 첫 줄이 `device=cuda`인지 확인.
+
+### 0-4. 코드 수정하고 다시 돌리기 (실습 4용)
+- 왼쪽 **폴더 아이콘(파일 패널)** → `tiny-llm-lab/01-char-gpt/gpt.py` 더블클릭 → 에디터에서 수정 → 다시 `!python gpt.py ...`
+- 실험 후 원래대로 되돌리기: `!git checkout gpt.py`
+- 레포에 새 커밋이 올라왔을 때 최신으로 받기: `!git pull`
+
+### 0-5. 알아둘 점
+- **세션이 끊기면 Colab 안의 파일이 전부 사라진다.** 다시 0-2부터 하면 된다. (데이터는 자동으로 다시 받아진다)
+- **오래 걸리는 학습**(Step 3 이후)의 체크포인트는 구글 드라이브에 저장해야 한다:
+
+```python
+from google.colab import drive
+drive.mount('/content/drive')
+# 저장 경로 예: /content/drive/MyDrive/tiny-llm-lab/ckpt.pt
+```
+
+- 코드 수정과 커밋은 **로컬(또는 Claude와 작업하는 쪽)에서 하고 Colab은 실행용**으로 쓰는 걸 추천한다. Colab에서 push하려면 GitHub 토큰이 필요해 번거롭다.
+- 무료 GPU는 사용 시간 제한이 있고, 한동안 쓰지 않으면 연결이 끊긴다. 학습 셀을 돌려놓고 창을 오래 방치하지 말 것.
+- GPU 사용량이 많아 연결이 거부되면 시간을 두고 다시 시도하거나 CPU 런타임으로도 600 step 정도는 돌릴 수 있다.
 
 ---
 
@@ -52,7 +96,7 @@ python attention_demo.py
 python gpt.py --max_iters 3000
 ```
 
-- 파라미터 약 0.21M. GPU가 없으면 CPU로 수 분~십수 분 걸린다 (600 step은 CPU 2분 안팎).
+- 파라미터 약 0.21M. Colab GPU면 CPU보다 훨씬 빠르다. (CPU로는 600 step이 2분 안팎이었다.)
 - 먼저 빨리 확인하고 싶으면 `--max_iters 600`.
 
 **확인할 것**

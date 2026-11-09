@@ -24,6 +24,16 @@ Building an LLM from scratch, step by step — hobby project (tokenizer → GPT 
 
 ## Setup
 
+기본 실습 환경은 **Google Colab (T4 GPU)**. 단계별 세팅 방법은 [01-char-gpt/PRACTICE.md](01-char-gpt/PRACTICE.md)의 "0. 환경 세팅" 참고.
+
+```python
+# Colab 셀
+!git clone https://github.com/alpaca07/tiny-llm-lab.git
+%cd tiny-llm-lab/01-char-gpt
+```
+
+로컬에서 돌릴 때:
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
