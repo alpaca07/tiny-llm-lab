@@ -218,3 +218,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# tiny-llm-lab
+*.pt
+*.pth
+*.bin
+*.safetensors
+data/
+runs/
+wandb/

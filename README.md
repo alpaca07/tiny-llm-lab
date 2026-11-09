@@ -1,2 +1,33 @@
 # tiny-llm-lab
+
 Building an LLM from scratch, step by step — hobby project (tokenizer → GPT → Llama-style upgrades → Korean)
+
+처음부터 직접 만들면서 LLM이 어떻게 동작하는지 이해하는 개인 학습 레포. 천천히, 단계별로 쌓아간다.
+
+## Roadmap
+
+| # | 폴더 | 내용 | 상태 |
+|---|------|------|------|
+| 1 | `01-char-gpt/` | 문자 단위 미니 GPT (셰익스피어) — 어텐션 감 잡기 | ⬜ |
+| 2 | `02-bpe-tokenizer/` | BPE 토크나이저 직접 구현 | ⬜ |
+| 3 | `03-gpt-pipeline/` | 사전학습 → 파인튜닝 → 명령어 튜닝 한 사이클 | ⬜ |
+| 4 | `04-llama-style/` | RoPE, RMSNorm, SwiGLU, GQA, KV 캐시 하나씩 적용 + 비교 | ⬜ |
+| 5 | `05-korean-lm/` | 한국어 코퍼스로 학습, 한국어 토크나이징 비교 | ⬜ |
+| 6 | `06-advanced/` | mixed precision, FlashAttention, DPO, 양자화, 서빙 | ⬜ |
+
+## References
+
+- Andrej Karpathy — [Let's build GPT](https://www.youtube.com/watch?v=kCc8FmEb1nY), [nanoGPT](https://github.com/karpathy/nanoGPT)
+- Sebastian Raschka — *Build a Large Language Model (From Scratch)*
+
+## Setup
+
+```bash
+python -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+## Notes
+
+- 모델 체크포인트(`*.pt`)와 `data/`는 용량 문제로 git에 올리지 않는다.
