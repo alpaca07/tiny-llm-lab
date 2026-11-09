@@ -15,6 +15,8 @@ Building an LLM from scratch, step by step — hobby project (tokenizer → GPT 
 | 5 | `05-korean-lm/` | 한국어 코퍼스로 학습, 한국어 토크나이징 비교 | ⬜ |
 | 6 | `06-advanced/` | mixed precision, FlashAttention, DPO, 양자화, 서빙 | ⬜ |
 
+각 폴더의 `PRACTICE.md`에 해당 단계의 실습 가이드(할 일, 확인할 것, 셀프 체크, 완료 기준)가 있다.
+
 ## References
 
 - Andrej Karpathy — [Let's build GPT](https://www.youtube.com/watch?v=kCc8FmEb1nY), [nanoGPT](https://github.com/karpathy/nanoGPT)
