@@ -16,6 +16,7 @@ Building an LLM from scratch, step by step — hobby project (tokenizer → GPT 
 | 6 | `06-advanced/` | mixed precision, FlashAttention, DPO, 양자화, 서빙 | ⬜ |
 
 각 폴더의 `PRACTICE.md`에 해당 단계의 실습 가이드(할 일, 확인할 것, 셀프 체크, 완료 기준)가 있다.
+단계를 끝내면 `SUMMARY.md`에 그날 배운 핵심 이론을 짧게 정리한다. ([Step 1 요약](01-char-gpt/SUMMARY.md))
 
 ## References
 
