@@ -8,7 +8,7 @@ Building an LLM from scratch, step by step — hobby project (tokenizer → GPT 
 
 | # | 폴더 | 내용 | 상태 |
 |---|------|------|------|
-| 1 | `01-char-gpt/` | 문자 단위 미니 GPT (셰익스피어) — 어텐션 감 잡기 | ⬜ |
+| 1 | `01-char-gpt/` | 문자 단위 미니 GPT (셰익스피어) — 이론은 [THEORY.md](01-char-gpt/THEORY.md) | 🔄 |
 | 2 | `02-bpe-tokenizer/` | BPE 토크나이저 직접 구현 | ⬜ |
 | 3 | `03-gpt-pipeline/` | 사전학습 → 파인튜닝 → 명령어 튜닝 한 사이클 | ⬜ |
 | 4 | `04-llama-style/` | RoPE, RMSNorm, SwiGLU, GQA, KV 캐시 하나씩 적용 + 비교 | ⬜ |
